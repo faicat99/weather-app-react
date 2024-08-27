@@ -1,11 +1,11 @@
 import React from "react";
 
-export default WeatherSearch(); {
+export default function WeatherSearch() {
         return (
                 <form>
-                <input type="Search" placeholder="Enter A City..."/>
-                <input type="Submit" value="Search" />
-                </form>
+                        <input type="search" placeholder="Enter a City..." />
+                        <input type="submit" value="Search" />
+                 </form>
         );
 }
 
