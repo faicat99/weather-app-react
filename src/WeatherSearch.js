@@ -8,12 +8,12 @@ export default function WeatherSearch() {
 
         function displayWeather(response) {
                 setWeatherResult(true);
-                console.log(response.data);
                 setWeather({
                         temperature: response.data.main.temp,
                         wind: response.data.wind.speed,
                         humidity: response.data.main.humidity,
-                        icon: ` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+                        icon: ` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+                        description: response.data.weather[0].description
                 });
         }
         
@@ -41,10 +41,11 @@ export default function WeatherSearch() {
                                 {form}
                                 <ul>
                                         <li>Temperature: {Math.round(weather.temperature)}'C</li>
+                                        <li>Description: {weather.description}</li>
                                         <li>Humidity: {weather.humidity}%</li>
-                                        <li>Wind: {weather.wind}km/h</li>
+                                        <li>Wind: {Math.round(weather.wind)}km/h</li>
                                         <li>
-                                                <img src={weather.icon} alt="Weather Icon" />
+                                        <img src={weather.icon} alt="Weather.description" />
                                         </li>
                                 </ul>
                         </div>
