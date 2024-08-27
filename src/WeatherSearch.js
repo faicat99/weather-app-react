@@ -4,18 +4,18 @@ import axios from "axios";
 export default function WeatherSearch() {
         const [city, setCity] = useState("");
         const [weatherResult, setWeatherResult] = useState(false);
+        const [temperature, setTemperature] = useState(null);
 
         function displayWeather(response) {
                 setWeatherResult(true);
-                console.log(response.data.main.temp);
-
+                setTemperature(response.data.main.temp);
         }
         
         function handleSubmit(event) {
                 event.preventDefault();
-                let apiKey="bafb81c036f1dc4bfbb21532bb2ot295"
+                let apiKey="094780c710fa4efd669f0df8c3991927";
                 let apiUrl = 
-                `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+                `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
                 axios.get(apiUrl).then(displayWeather);
         }
         
@@ -24,7 +24,7 @@ export default function WeatherSearch() {
         }
 
         if (weatherResult) {
-                return "Loading..."
+                return temperature;
         } else {
 
 
